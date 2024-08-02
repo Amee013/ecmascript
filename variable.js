@@ -88,4 +88,6 @@ class Example {
   
   //const instance = new Example();
   //console.log(instance.staticMethod()); // TypeError: instance.staticMethod is not a function
+
+  /////finish
   
