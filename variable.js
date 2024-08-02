@@ -90,4 +90,5 @@ class Example {
   //console.log(instance.staticMethod()); // TypeError: instance.staticMethod is not a function
 
   /////finish
-  
+
+

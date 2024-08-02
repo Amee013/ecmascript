@@ -93,4 +93,15 @@ console.log(complexString);
 // Forward slash: /
 
 const escaped = `This is a backtick: \` and this is a dollar sign: \$`;
-console.log(escaped); // This is a backtick: ` and this is a dollar sign: $
+console.log(escaped); // This is a backtick: ` and this is a dollar sign: $'
+
+const a = `
+backslash: \\\\\\\\\\
+Forward slash: /////
+`;
+
+console.log(a);
+
+const b = '"/"';
+console.log(b);
+
