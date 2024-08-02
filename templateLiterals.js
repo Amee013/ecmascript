@@ -76,10 +76,21 @@ const total = `Total price is $${quantity * pricePerUnit}`;
 const message = `The ${total} for ${quantity} units at $${pricePerUnit} each.`;
 console.log(message); 
 
+const complexString = `Path: C:\\Users\\Username\\Documents\\file.txt
+URL: https://www.example.com/path/to/resource
+Quote: "It's a wonderful day!"
+Single backslash: \\
+Double backslash: \\\\
+Forward slash: /
+`;
+console.log(complexString);
+// Output:
+// Path: C:\Users\Username\Documents\file.txt
+// URL: https://www.example.com/path/to/resource
+// Quote: "It's a wonderful day!"
+// Single backslash: \
+// Double backslash: \\
+// Forward slash: /
 
-
-
-
-
-
-
+const escaped = `This is a backtick: \` and this is a dollar sign: \$`;
+console.log(escaped); // This is a backtick: ` and this is a dollar sign: $

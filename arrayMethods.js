@@ -16,7 +16,7 @@
 
 // 1. foreach() method - provide function for each element 
 
-const numbers = [10,20,30,40];
+const numbers4 = [10,20,30,40];
 
 console.log("foeEach() method : ")
 
@@ -61,7 +61,7 @@ console.log("Sum = " +sum);
 
 console.log("-------------------")
 
-//letters 
+// //letters 
 
 const letters = ['a','b','c','a','a','b','c','d']
 
@@ -82,7 +82,7 @@ console.log(count);
 console.log("-------------------")
 
 
-// 2.map() method - x
+// 2.map() method - 
 
 console.log("Map() method : ")
 
@@ -93,7 +93,57 @@ console.log(doubled);
 
 console.log("-------------------")
 
-// 3.filter() method - 
+// //worst case: 
+
+// //1.large array 
+const largeArray = Array(1e6).fill(7);
+// Now largeArray is [1, 1, 1, ..., 1] (1,000,000 times)
+const result6 = largeArray.map(num => num * 2); // O(n)
+
+console.log(result6);
+
+// /// expensive call back function
+
+const numbers2 = [1, 2, 3, 4, 5];
+const result5 = numbers.map(num => {
+  // Simulate an expensive operation
+  for (let i = 0; i < 1e6; i++) {}
+  return num * 2;
+}); // O(n * m) where m is the time complexity of the expensive operation
+
+console.log(result5);
+
+// //complex data structure 
+
+const complexArray = [
+    { value: 1, data: Array(1e3).fill(0) },
+    { value: 2, data: Array(1e3).fill(0) },
+    { value: 3, data: Array(1e3).fill(0) },
+  ];
+
+const result4 = complexArray.map(obj => {
+    // Process the complex data structure
+    obj.data.forEach(item => {});
+    return obj.value * 2;
+}); // O(n * k) where k is the complexity of processing each complex element
+  
+  console.log(result4);
+
+// //nested array 
+
+const nestedArray = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+  ];
+  const result3= nestedArray.map(innerArray => {
+    return innerArray.map(num => num * 2);
+  }); // O(n * m) where m is the size of inner arrays
+  
+  console.log(result3);
+
+
+// // 3.filter() method - 
 
 console.log("filter() method : ")
 
@@ -101,9 +151,13 @@ const n = [1, 2, 3, 4, 5];
 const even = n.filter(num => num % 2 === 0);
 console.log(even); // [2, 4]
 
+//all elements pass condition
+// no element pass condition'
+
+
 console.log("-------------------")
 
-// 4.find() method 
+// // 4.find() method 
 
 console.log("find() method : ")
 
@@ -123,6 +177,19 @@ founduser = users.find( function(user) {
 console.log(founduser);
 
 console.log("-------------------")
+
+// //element not found
+
+const numbers1 = [1, 2, 3, 4, 5];
+const result2 = numbers.find(num => num > 5); // undefined
+// O(n)
+console.log(result2);
+
+// //large array with searched element at last 
+// const largeArray = Array.from({ length: 1e6 }, (_, i) => i + 1);
+// const result1 = largeArray.find(num => num === 1e6);
+// // O(n)
+// console.log(result1);
 
 // 5. every() method and 6. some() method 
 
@@ -144,7 +211,26 @@ console.log(someUserAboveTwenty);
 
 console.log("-------------------")
 
-// 7. reduce() method 
+// //every = worst 
+// //all element satisfy the condition
+
+const numbers = [1, 2, 7 , 4, 5];
+const result = numbers.every(num => num < 10); // true
+// O(n)
+
+console.log(result);
+
+//some = worst 
+//no element satisfy the condition
+
+
+const result1 = numbers.every(num => num > 10); // true
+// O(n)
+
+console.log(result1);
+
+
+// // 7. reduce() method 
 
 console.log("reduce() method : ")
 
@@ -167,7 +253,7 @@ console.log("index of even number =  " +index);
 
 console.log("-------------------")
 
-// 9. sort() method 
+// // 9. sort() method 
 
 
 console.log("sort() method : ")
@@ -178,7 +264,10 @@ console.log("sorted array : "+a); // [1, 2, 3, 4, 5]
 
 console.log("-------------------")
 
-//10 . concate() method 
+//////Sorting an Already Sorted Array with a Non-Optimized Algorithm
+///////Sorting a Reversed Array
+
+// //10 . concate() method 
 
 console.log("concate() method : ")
 
@@ -186,10 +275,3 @@ const array1 = [1, 2];
 const array2 = [3, 4];
 const combined = array1.concat(array2);
 console.log("combined array : " +combined); // [1, 2, 3, 4]
-
-
-
-
-
-
-
