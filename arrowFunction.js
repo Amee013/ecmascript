@@ -50,7 +50,7 @@ console.log('this keyword in arrow function : ')
 
 const test1 = () => {
     let name = "amee";
-    console.log(this.username);
+    console.log(this.name);
 }
 
 test1();
@@ -87,3 +87,77 @@ console.log(greet());
 const numbers = [1, 2, 3, 4, 5];
 const squares = numbers.map(n => n * n);
 console.log(squares); 
+
+//lexical this and super
+class MyClass {
+    constructor() {
+      this.name = 'MyClass';
+    }
+    getName = () => {
+      return this.name;
+    };
+  }
+  
+  const instance = new MyClass();
+  console.log(instance.getName()); // 'MyClass'
+
+  //Array Methods
+
+  const users = [
+    { name: 'Alice', age: 25 },
+    { name: 'Bob', age: 30 },
+    { name: 'Charlie', age: 35 },
+  ];
+  
+  const names = users.map(user => user.name);
+  console.log(names); // ['Alice', 'Bob', 'Charlie']
+  
+  const adults = users.filter(user => user.age >= 30);
+  console.log(adults); // [{ name: 'Bob', age: 30 }, { name: 'Charlie', age: 35 }]
+  
+  
+///limitations 
+
+//No prototype Property
+
+const ArrowFunction = () => {};
+console.log(ArrowFunction.prototype); // undefined
+
+//Not Suitable for Object Methods
+
+const obj = {
+    value: 42,
+    getValue: function() {
+      return this.value; // Correct context
+    },
+    getArrowValue: () => this.value // Incorrect context
+  };
+  
+  console.log(obj.getValue()); // 42
+  console.log(obj.getArrowValue()); // undefined
+
+//No super binding 
+
+  class Parent {
+    constructor() {
+      this.name = 'Parent';
+    }
+  }
+  
+  class Child extends Parent {
+    constructor() {
+      super();
+      this.name = 'Child';
+    }
+  
+    getName() {
+      return super.name; // Works
+    }
+  
+    getArrowName = () => super.name; // SyntaxError: 'super' keyword unexpected here
+  }
+  
+  const ins = new Child();
+  console.log(ins.getName());
+  console.log(ins.getArrowName());
+  

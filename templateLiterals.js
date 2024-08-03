@@ -105,3 +105,48 @@ console.log(a);
 const b = '"/"';
 console.log(b);
 
+////Limitations 
+
+//Verbose for Complex Tag Functions
+function tag(strings, ...values) {
+  return strings.reduce((result, str, i) => `${result}${str}${values[i] ? `<b>${values[i]}</b>` : ''}`, '');
+}
+
+const user = 'Alice';
+const messag = tag`Hello, ${user}! Welcome to the platform.`;
+console.log(messag); // Hello, <b>Alice</b>! Welcome to the platform.
+
+
+//Potential Security Risks
+const userInput = '<script>alert("Hacked!")</script>';
+const msg = `User said: ${userInput}`;
+console.log(msg); // User said: <script>alert("Hacked!")</script>
+// Potential XSS attack if this string is rendered on a webpage
+
+
+//No Native Support for Indentation Handling
+const html = `
+  <div>
+    <p>This is a paragraph.</p>
+  </div>
+`;
+console.log(html);
+// Output includes the leading spaces
+
+//Limited String Interpolation Capabilities
+const nm = 'Alice';
+const greetings = `Hello, ${nm.toUpperCase}!`; // Basic interpolation
+console.log(greetings); //Hello, function toUpperCase() { [native code] }!
+// No built-in support for advanced formatting like ${name.toUpperCase()}
+
+//No Compile-Time Checks
+const user1 = { name: 'Alice' };
+const messagee = `Hello, ${user.namee}!`; // Typo in 'name'
+console.log(messagee); // Hello, undefined!
+
+
+
+
+
+
+

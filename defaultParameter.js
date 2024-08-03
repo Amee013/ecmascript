@@ -101,10 +101,67 @@ console.log('interdependency : ')
   console.log(sum(2));      // 6 (2 + 2 + 2)
   console.log(sum(2, 3));   // 10 (2 + 3 + 5)
   console.log(sum(2, 3, 4));// 9 (2 + 3 + 4)
+
+
+  //object destructuring 
+
+  function greet({ name = 'Guest', age = 18 } = {}) {
+    console.log(`Hello, ${name}. You are ${age} years old.`);
+  }
   
+  greet(); // Outputs: Hello, Guest. You are 18 years old.
+  greet({ name: 'Alice' }); // Outputs: Hello, Alice. You are 18 years old.
 
+  //array destructuring 
 
+  // function sum([a = 0, b = 0, c = 0] = []) {
+  //   return a + b + c;
+  // }
   
+  // console.log(sum([1, 2])); // Outputs: 3
+  // console.log(sum()); // Outputs: 0
 
+  //conditional defaults 
 
+  function greet(name = 'Guest', isLoggedIn = false) {
+    const greeting = isLoggedIn ? `Welcome back, ${name}!` : `Hello, ${name}. Please log in.`;
+    console.log(greeting);
+  }
   
+  greet(); // Outputs: Hello, Guest. Please log in.
+  greet('Alice', true); // Outputs: Welcome back, Alice!
+
+
+  /// limitations 
+
+  //non trivial evaluations 
+
+  function randomValue() {
+    return Math.random();
+  }
+  
+  function example(a = randomValue()) {
+    console.log(a);
+  }
+  
+  example(); // Different output each time
+
+  //Interaction with arguments Object
+
+  function example2(a = 1, b = 2) {
+    console.log(arguments.length); // Number of arguments actually passed
+    console.log(a, b);
+  }
+  
+  example2(10); // 1 argument, outputs 10, 2
+  
+  // Complex Default Values
+
+  function example(arr = []) {
+    arr.push('value');
+    console.log(arr);
+  }
+  
+  example(); // ['value']
+  example(); // ['value'], not the same array instance
+
