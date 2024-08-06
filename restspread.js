@@ -151,6 +151,48 @@ function example(first, ...rest) {
 
 example(1,2,"amee"); // 1, 2 3 4
 
+// array to object 
+let array = [2, 'b', 4];
+
+let obj = { ...array };
+
+console.log("Array to object : ")
+console.log(obj); // { 0: 2 , 1: 'b', 2: 4 }
+
+// object to array 
+
+//extracting values 
+
+const object = { a: 1, b: 2, c: 3 , d:4 , e:5 , f:6 , g :7};
+
+const valuesArray = [...Object.values(object)];
+
+console.log(valuesArray); 
+
+// extracting keys 
+
+const keysArray = [...Object.keys(object)];
+
+console.log(keysArray); 
+
+// extracting entries 
+
+const entriesArray = [...Object.entries(object)];
+
+console.log(entriesArray); // [['a', 1], ['b', 2], ['c', 3]]
+
+// change any object 
+
+let obj9 = {
+  name : 'amee',
+  company : 'abc',
+  address : 'rajkot',
+  age : '21'
+}
+
+console.log({...obj9 , name : "Bhakti "});  // can override 
+console.log({ name : "Bhakti " , ...obj9 }); // can not override
+
 /// limitations 
 
 // Rest Operator Limitations

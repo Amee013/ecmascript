@@ -16,8 +16,7 @@ const number = [1, 2, 3, 4, 5];
 
 const [first, , third] = numbers;
 
-console.log(first); // 1
-console.log(third); // 3
+console.log(first , third ); // 1 3 
 
 //default values 
 
@@ -143,26 +142,27 @@ const data = {
 
 //Object Destructuring in Function Parameters:
 
+const person4 = {
+  name: 'Alice',
+  age: 25
+};
 
 function greet({ name, age }) {
     console.log(`Hello, ${name}! You are ${age} years old.`);
   }
   
-  const person4 = {
-    name: 'Alice',
-    age: 25
-  };
+
   
   greet(person4); // Hello, Alice! You are 25 years old.
 
 
 //Array Destructuring in Function Parameters:
 
+const numbersss = [1, 2];
+
   function sum([a, b]) {
     return a + b;
   }
-  
-  const numbersss = [1, 2];
   
   console.log(sum(numbersss)); // 3
   
